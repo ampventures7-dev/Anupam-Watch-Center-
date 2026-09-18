@@ -1,5 +1,5 @@
 {
   "buildCommand": null,
-  "outputDirectory": "frontend/public",
+  "outputDirectory": "public",
   "cleanUrls": true
 }
