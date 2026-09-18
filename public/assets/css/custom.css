@@ -1,20 +1,26 @@
-/* Anupam Watch Center - Luxury White Theme */
+/* Anupam Watch Center - Geneva Sovereign (Imperial Emerald & Oyster Gold) Theme */
 
 :root {
   --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-tertiary: #f1f5f9;
-  --text-main: #0f172a;
-  --text-body: #334155;
-  --text-muted: #64748b;
-  --brand-gold: #b45309;
-  --brand-gold-hover: #92400e;
-  --brand-gold-subtle: #d97706;
+  --bg-secondary: #f8faf8;
+  --bg-tertiary: #f1f5f2;
+  --text-main: #06281b;
+  --text-body: #1e2e28;
+  --text-muted: #475a50;
+  --emerald-deep: #06281b;
+  --emerald-rich: #0a3d29;
+  --emerald-tint: #e8f4ee;
+  --gold-oyster: #a37e2c;
+  --gold-champagne: #c5a059;
+  --gold-radiance: #e5c378;
+  --brand-gold: #0a3d29;
+  --brand-gold-hover: #06281b;
+  --brand-gold-subtle: #a37e2c;
   --wa-green: #25d366;
   --wa-dark: #128c7e;
   --card-bg: #ffffff;
   --card-border: #e2e8f0;
-  --card-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
+  --card-shadow: 0 6px 24px rgba(6, 40, 27, 0.05);
 }
 
 body {
@@ -30,37 +36,109 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 /* ========================================================
-   Navbar (Luxury White Glassmorphism)
+   Description & Muted Typography (Darker, High-Contrast)
+   ======================================================== */
+.text-muted,
+p.text-muted,
+span.text-muted,
+small.text-muted,
+div.text-muted,
+li.text-muted,
+.text-body,
+p.text-body {
+  color: #475569 !important;
+}
+
+/* Interactive links with text-muted */
+a.text-muted {
+  color: #475569 !important;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a.text-muted:hover,
+a.text-muted:focus {
+  color: var(--brand-gold) !important;
+}
+
+/* Review quotes in Google testimonials */
+.google-rating-box p {
+  color: #334155 !important;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.google-rating-box small.text-muted {
+  color: #64748b !important;
+}
+
+/* Descriptions across cards, quizzes, guides, services */
+.gift-card p,
+.service-card p,
+.quiz-container p,
+.quiz-result-card p,
+.dial-guide-section p {
+  color: #475569 !important;
+}
+
+/* ========================================================
+   Navbar (Palette 4: Brushed Graphite & Titanium Luxury Glass)
    ======================================================== */
 .navbar {
-  background: rgba(255, 255, 255, 0.96) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--card-border) !important;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
+  background: rgba(17, 22, 31, 0.94) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.45);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.25s ease;
+  text-decoration: none !important;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.02);
 }
 
 .navbar-brand img.brand-logo {
-  height: 42px;
-  width: 42px;
-  object-fit: cover;
+  height: 54px;
+  width: 54px;
+  object-fit: contain;
+  background: #ffffff;
   border-radius: 50%;
-  border: 2px solid var(--brand-gold);
-  box-shadow: 0 0 10px rgba(180, 83, 9, 0.25);
+  border: 2.5px solid var(--gold-oyster);
+  box-shadow: 0 0 20px rgba(197, 160, 89, 0.5), 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.navbar-brand:hover img.brand-logo {
+  box-shadow: 0 0 26px rgba(229, 195, 120, 0.75), 0 4px 16px rgba(0, 0, 0, 0.5);
 }
 
 .navbar-brand .brand-title {
-  color: var(--text-main) !important;
+  color: #ffffff !important;
+  font-size: 1.75rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 2px !important;
+  line-height: 1.05 !important;
+  text-shadow: 0 2px 16px rgba(255, 255, 255, 0.4), 0 0 25px rgba(255, 255, 255, 0.2);
 }
 
 .brand-subtitle {
-  font-size: 0.68rem;
-  letter-spacing: 1.2px;
-  color: var(--brand-gold);
+  font-size: 0.80rem !important;
+  letter-spacing: 2.6px !important;
+  color: var(--gold-champagne) !important;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 800 !important;
   display: block;
   white-space: nowrap;
+  margin-top: 2px;
+  text-shadow: 0 0 12px rgba(229, 195, 120, 0.45);
 }
 
 .navbar .navbar-nav {
@@ -72,22 +150,98 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-size: 0.80rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.8px;
-  padding: 0.4rem 0.55rem !important;
-  color: #334155 !important;
+  padding: 0.4rem 0.6rem !important;
+  color: #cbd5e1 !important;
   transition: all 0.2s ease;
 }
 
 .navbar .nav-link:hover,
-.navbar .nav-link:focus {
-  color: var(--brand-gold) !important;
+.navbar .nav-link:focus,
+.navbar .nav-link.active {
+  color: #ffffff !important;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+}
+
+/* Luxury Animated Mobile Hamburger Button */
+.navbar .navbar-toggler {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  border-radius: 10px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1.5px solid rgba(229, 195, 120, 0.45) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.navbar .navbar-toggler:hover,
+.navbar .navbar-toggler:focus {
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-color: var(--gold-champagne) !important;
+  box-shadow: 0 0 14px rgba(229, 195, 120, 0.4) !important;
+}
+
+.mobile-menu-bars {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 22px;
+  height: 18px;
+  pointer-events: none;
+}
+
+.mobile-menu-bars span {
+  display: block;
+  width: 100%;
+  height: 2.5px;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Animate into X when opened */
+.navbar-toggler:not(.collapsed) .mobile-menu-bars span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+  background: var(--gold-champagne);
+}
+.navbar-toggler:not(.collapsed) .mobile-menu-bars span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.navbar-toggler:not(.collapsed) .mobile-menu-bars span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+  background: var(--gold-champagne);
 }
 
 .navbar-actions {
   display: flex;
   align-items: center;
   flex-wrap: nowrap !important;
-  gap: 8px;
+  gap: 10px;
   white-space: nowrap;
+}
+
+.navbar .live-store-status.open {
+  background: rgba(34, 197, 94, 0.15) !important;
+  color: #86efac !important;
+  border: 1px solid rgba(34, 197, 94, 0.4) !important;
+}
+
+.navbar .btn-outline-dark {
+  color: #f1f5f9 !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.navbar .btn-outline-dark:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  color: #ffffff !important;
 }
 
 /* Live Store Status Badge */
@@ -221,24 +375,25 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .btn-dark-luxury {
-  background-color: #0f172a;
+  background-color: var(--emerald-deep);
   color: #ffffff !important;
   font-weight: 700;
-  border: 1px solid #0f172a;
+  border: 1px solid var(--emerald-deep);
   border-radius: 6px;
   padding: 10px 22px;
   transition: all 0.25s ease;
 }
 
 .btn-dark-luxury:hover {
-  background-color: #1e293b;
+  background-color: var(--emerald-rich);
+  border-color: var(--emerald-rich);
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.2);
+  box-shadow: 0 4px 15px rgba(6, 40, 27, 0.3);
   color: #ffffff !important;
 }
 
 .btn-gold {
-  background: linear-gradient(135deg, #b45309, #d97706);
+  background: linear-gradient(135deg, var(--gold-oyster), var(--gold-champagne));
   color: #ffffff !important;
   font-weight: 700;
   border: none;
@@ -247,96 +402,498 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .btn-gold:hover {
-  background: linear-gradient(135deg, #d97706, #b45309);
+  background: linear-gradient(135deg, var(--gold-champagne), var(--gold-oyster));
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(180, 83, 9, 0.3);
+  box-shadow: 0 4px 15px rgba(163, 126, 44, 0.35);
   color: #ffffff !important;
 }
 
 /* ========================================================
-   Hero Section (White Luxury Gradient)
+   Hero Section (Haute Horlogerie Luxury Light Atmosphere)
    ======================================================== */
 .hero-white-section {
-  background: linear-gradient(125deg, #ffffff 0%, #f8fafc 50%, #edf2f7 100%);
+  background: linear-gradient(135deg, #2b1307 0%, #1a0a03 100%);
   border-bottom: 1px solid var(--card-border);
   position: relative;
   overflow: hidden;
+  transition: background 0.8s ease-in-out, border-color 0.8s ease;
+}
+
+.hero-white-section .hero-title,
+.hero-white-section .hero-title.text-dark {
+  color: #0f172a !important;
+  transition: color 0.6s ease;
+  text-shadow: none;
+}
+
+.hero-white-section .hero-subtitle {
+  color: #334155 !important;
+  line-height: 1.7;
+  transition: color 0.6s ease;
+}
+
+.hero-white-section .hero-subtitle strong {
+  color: #0f172a !important;
+  font-weight: 700;
+}
+
+.hero-white-section .hero-trust-bar {
+  border-top-color: rgba(226, 232, 240, 0.8) !important;
+}
+
+.hero-white-section .hero-trust-bar .text-dark {
+  color: #0f172a !important;
+}
+
+.hero-white-section .hero-trust-bar .text-muted {
+  color: #64748b !important;
+}
+
+.hero-white-section .hero-trust-bar .vr {
+  background-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+.hero-white-section .btn-outline-dark {
+  color: #0f172a !important;
+  border-color: #0f172a !important;
+  background: transparent;
+}
+
+.hero-white-section .btn-outline-dark:hover {
+  background: #0f172a !important;
+  border-color: #0f172a !important;
+  color: #ffffff !important;
+}
+
+.hero-heritage-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1.5px solid rgba(10, 61, 41, 0.25);
+  box-shadow: 0 4px 15px rgba(10, 61, 41, 0.08);
+  color: var(--emerald-deep);
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 10px 24px;
+  border-radius: 50px;
+  transition: all 0.6s ease;
+}
+
+.hero-heritage-badge .star-icon {
+  font-size: 1.15rem;
+  color: var(--gold-champagne);
+  transition: color 0.6s ease;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #06281b 0%, #0a3d29 45%, #a37e2c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.8s ease;
+}
+
+/* 1. Theme Cognac Brown & Rose Gold (Titan Chrono watch-2.png) */
+.hero-white-section.theme-cognac {
+  background: linear-gradient(135deg, #421c0b 0%, #2a1005 50%, #190902 100%) !important;
+  border-bottom: 2px solid rgba(217, 119, 6, 0.45) !important;
+}
+.hero-white-section.theme-cognac .hero-title,
+.hero-white-section.theme-cognac .hero-title.text-dark {
+  color: #ffffff !important;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+.hero-white-section.theme-cognac .gold-gradient-text {
+  background: linear-gradient(135deg, #fef3c7 0%, #f59e0b 45%, #ea580c 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 0 14px rgba(245, 158, 11, 0.4));
+}
+.hero-white-section.theme-cognac .hero-subtitle {
+  color: #f1f5f9 !important;
+}
+.hero-white-section.theme-cognac .hero-subtitle strong {
+  color: #ffffff !important;
+}
+.hero-white-section.theme-cognac .hero-heritage-badge {
+  background: rgba(84, 37, 17, 0.55) !important;
+  border: 1.5px solid rgba(245, 158, 11, 0.65) !important;
+  color: #fef3c7 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 25px rgba(245, 158, 11, 0.3) !important;
+}
+.hero-white-section.theme-cognac .hero-heritage-badge .star-icon {
+  color: #f59e0b !important;
+  filter: drop-shadow(0 0 8px #f59e0b) !important;
+}
+.hero-white-section.theme-cognac .hero-floating-pill {
+  background: rgba(35, 13, 4, 0.88) !important;
+  border-color: rgba(245, 158, 11, 0.55) !important;
+  color: #fef3c7 !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45) !important;
+}
+.hero-white-section.theme-cognac .hero-thumb-btn.active {
+  background: linear-gradient(135deg, #b45309, #7c2d12) !important;
+  border-color: #f59e0b !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.5) !important;
+}
+.hero-white-section.theme-cognac .hero-trust-bar {
+  border-top-color: rgba(255, 255, 255, 0.22) !important;
+}
+.hero-white-section.theme-cognac .hero-trust-bar .text-dark {
+  color: #ffffff !important;
+}
+.hero-white-section.theme-cognac .hero-trust-bar .text-muted {
+  color: #cbd5e1 !important;
+}
+.hero-white-section.theme-cognac .hero-trust-bar .vr {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+.hero-white-section.theme-cognac .btn-outline-dark {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  background: rgba(255, 255, 255, 0.08);
+}
+.hero-white-section.theme-cognac .btn-outline-dark:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* 2. Theme Sapphire & Stealth Carbon (Fastrack Sport watch-1.png) */
+.hero-white-section.theme-sapphire {
+  background: linear-gradient(135deg, #0b345b 0%, #061f38 50%, #031120 100%) !important;
+  border-bottom: 2px solid rgba(56, 189, 248, 0.45) !important;
+}
+.hero-white-section.theme-sapphire .hero-title,
+.hero-white-section.theme-sapphire .hero-title.text-dark {
+  color: #ffffff !important;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+.hero-white-section.theme-sapphire .gold-gradient-text {
+  background: linear-gradient(135deg, #e0f2fe 0%, #38bdf8 45%, #0284c7 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.4));
+}
+.hero-white-section.theme-sapphire .hero-subtitle {
+  color: #f1f5f9 !important;
+}
+.hero-white-section.theme-sapphire .hero-subtitle strong {
+  color: #ffffff !important;
+}
+.hero-white-section.theme-sapphire .hero-heritage-badge {
+  background: rgba(14, 67, 117, 0.55) !important;
+  border: 1.5px solid rgba(56, 189, 248, 0.65) !important;
+  color: #e0f2fe !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 25px rgba(56, 189, 248, 0.3) !important;
+}
+.hero-white-section.theme-sapphire .hero-heritage-badge .star-icon {
+  color: #38bdf8 !important;
+  filter: drop-shadow(0 0 8px #38bdf8) !important;
+}
+.hero-white-section.theme-sapphire .hero-floating-pill {
+  background: rgba(5, 24, 43, 0.88) !important;
+  border-color: rgba(56, 189, 248, 0.55) !important;
+  color: #e0f2fe !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45) !important;
+}
+.hero-white-section.theme-sapphire .hero-thumb-btn.active {
+  background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.5) !important;
+}
+.hero-white-section.theme-sapphire .hero-trust-bar {
+  border-top-color: rgba(255, 255, 255, 0.22) !important;
+}
+.hero-white-section.theme-sapphire .hero-trust-bar .text-dark {
+  color: #ffffff !important;
+}
+.hero-white-section.theme-sapphire .hero-trust-bar .text-muted {
+  color: #cbd5e1 !important;
+}
+.hero-white-section.theme-sapphire .hero-trust-bar .vr {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+.hero-white-section.theme-sapphire .btn-outline-dark {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  background: rgba(255, 255, 255, 0.08);
+}
+.hero-white-section.theme-sapphire .btn-outline-dark:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* 3. Theme Khaki Field & Antique Gold (Sonata Classic watch-3.png) */
+.hero-white-section.theme-khaki {
+  background: linear-gradient(135deg, #2b3e20 0%, #1b2814 50%, #0e160a 100%) !important;
+  border-bottom: 2px solid rgba(234, 179, 8, 0.45) !important;
+}
+.hero-white-section.theme-khaki .hero-title,
+.hero-white-section.theme-khaki .hero-title.text-dark {
+  color: #ffffff !important;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+.hero-white-section.theme-khaki .gold-gradient-text {
+  background: linear-gradient(135deg, #fef9c3 0%, #eab308 45%, #a37e2c 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 0 14px rgba(234, 179, 8, 0.4));
+}
+.hero-white-section.theme-khaki .hero-subtitle {
+  color: #f1f5f9 !important;
+}
+.hero-white-section.theme-khaki .hero-subtitle strong {
+  color: #ffffff !important;
+}
+.hero-white-section.theme-khaki .hero-heritage-badge {
+  background: rgba(54, 77, 40, 0.55) !important;
+  border: 1.5px solid rgba(234, 179, 8, 0.65) !important;
+  color: #fef9c3 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 25px rgba(234, 179, 8, 0.3) !important;
+}
+.hero-white-section.theme-khaki .hero-heritage-badge .star-icon {
+  color: #eab308 !important;
+  filter: drop-shadow(0 0 8px #eab308) !important;
+}
+.hero-white-section.theme-khaki .hero-floating-pill {
+  background: rgba(19, 29, 13, 0.88) !important;
+  border-color: rgba(234, 179, 8, 0.55) !important;
+  color: #fef9c3 !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45) !important;
+}
+.hero-white-section.theme-khaki .hero-thumb-btn.active {
+  background: linear-gradient(135deg, #a37e2c, #713f12) !important;
+  border-color: #facc15 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 16px rgba(234, 179, 8, 0.5) !important;
+}
+.hero-white-section.theme-khaki .hero-trust-bar {
+  border-top-color: rgba(255, 255, 255, 0.22) !important;
+}
+.hero-white-section.theme-khaki .hero-trust-bar .text-dark {
+  color: #ffffff !important;
+}
+.hero-white-section.theme-khaki .hero-trust-bar .text-muted {
+  color: #cbd5e1 !important;
+}
+.hero-white-section.theme-khaki .hero-trust-bar .vr {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+.hero-white-section.theme-khaki .btn-outline-dark {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  background: rgba(255, 255, 255, 0.08);
+}
+.hero-white-section.theme-khaki .btn-outline-dark:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.hero-trust-icon {
+  font-size: 1.4rem;
+  display: inline-block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .hero-watch-glow {
   position: relative;
   display: inline-block;
+  padding: 20px 10px;
+  min-height: 530px;
 }
 
-.hero-watch-glow::before {
-  content: '';
+
+.hero-floating-pill {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle, rgba(180, 83, 9, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  z-index: 0;
-  animation: floatHalo 6s ease-in-out infinite alternate;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(163, 126, 44, 0.35);
+  box-shadow: 0 8px 24px rgba(6, 40, 27, 0.08);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--emerald-deep);
+  padding: 7px 16px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.hero-floating-pill.top-pill {
+  top: 5px;
+  right: -10px;
+  animation: floatPillTop 5s ease-in-out infinite alternate;
+}
+
+.hero-floating-pill.bottom-pill {
+  bottom: 20px;
+  left: -10px;
+  animation: floatPillBottom 6s ease-in-out infinite alternate;
+}
+
+@keyframes floatPillTop {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-8px); }
+}
+
+@keyframes floatPillBottom {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(8px); }
 }
 
 .hero-watch-img {
   position: relative;
   z-index: 1;
-  max-height: 440px;
-  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.15));
+  max-height: 530px;
+  width: auto;
+  filter: drop-shadow(0 28px 42px rgba(0, 0, 0, 0.20));
   animation: floatWatch 5s ease-in-out infinite alternate;
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes floatWatch {
   0% { transform: translateY(0px) rotate(0deg); }
-  100% { transform: translateY(-12px) rotate(1deg); }
+  100% { transform: translateY(-14px) rotate(1.2deg); }
 }
 
-@keyframes floatHalo {
-  0% { transform: translate(-50%, -50%) scale(0.9); }
-  100% { transform: translate(-50%, -50%) scale(1.15); }
+
+/* Hero Watch Model Switcher in Home Section */
+.hero-image-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  z-index: 4;
+}
+
+.hero-thumb-btn {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(163, 126, 44, 0.3);
+  border-radius: 20px;
+  padding: 5px 12px 5px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text-body);
+  box-shadow: 0 2px 8px rgba(6, 40, 27, 0.06);
+}
+
+.hero-thumb-btn img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+  transition: transform 0.2s ease;
+}
+
+.hero-thumb-btn:hover {
+  border-color: var(--emerald-rich);
+  transform: translateY(-2px);
+  color: var(--emerald-rich);
+}
+
+.hero-thumb-btn:hover img {
+  transform: scale(1.15);
+}
+
+.hero-thumb-btn.active {
+  background: var(--emerald-deep);
+  border-color: var(--emerald-deep);
+  color: var(--gold-radiance);
+  box-shadow: 0 4px 14px rgba(6, 40, 27, 0.25);
 }
 
 /* ========================================================
-   Brand Cards (Crisp White Elevation)
+   Brand Atelier Cards (Luxury Elevation Gallery)
    ======================================================== */
 .brand-card {
   background: #ffffff;
   border: 1px solid var(--card-border);
-  border-radius: 10px;
-  padding: 24px 16px;
+  border-radius: 12px;
+  padding: 22px 14px 18px;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  box-shadow: var(--card-shadow);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+  position: relative;
+  overflow: hidden;
 }
 
 .brand-card:hover {
-  border-color: var(--brand-gold);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  border-color: var(--emerald-rich);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 36px rgba(6, 40, 27, 0.12);
+}
+
+.brand-badge {
+  font-size: 0.64rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--emerald-deep);
+  background: var(--emerald-tint);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(10, 61, 41, 0.2);
+  margin-bottom: 10px;
+}
+
+.brand-img-wrap {
+  height: 110px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.brand-watch-thumb {
+  max-height: 100px;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.12));
+  transition: transform 0.35s ease;
+}
+
+.brand-card:hover .brand-watch-thumb {
+  transform: scale(1.1) translateY(-4px);
 }
 
 .brand-card .brand-name {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  letter-spacing: 2px;
-  margin-bottom: 6px;
-  color: var(--text-main);
+  letter-spacing: 1.5px;
+  margin-bottom: 4px;
+  line-height: 1.2;
 }
 
 .brand-card .brand-desc {
-  font-size: 0.78rem;
-  color: var(--text-muted);
+  font-size: 0.74rem;
+  color: #64748b !important;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.6px;
+  margin-bottom: 6px;
+}
+
+.brand-warranty {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--gold-oyster);
+  letter-spacing: 0.3px;
+  display: block;
 }
 
 /* ========================================================
@@ -360,7 +917,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-size: 0.92rem;
   text-transform: uppercase;
   letter-spacing: 1.2px;
-  color: var(--brand-gold);
+  color: var(--emerald-rich);
   font-weight: 700;
   margin-bottom: 12px;
 }
@@ -386,11 +943,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .quiz-option-btn.active {
-  background: #0f172a;
-  border-color: #0f172a;
+  background: var(--emerald-deep);
+  border-color: var(--emerald-deep);
   color: #ffffff;
   font-weight: 700;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+  box-shadow: 0 4px 12px rgba(6, 40, 27, 0.25);
 }
 
 .quiz-result-card {
@@ -412,74 +969,137 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .dial-display-box {
-  background: #f8fafc;
+  background: #ffffff;
   border: 1px solid var(--card-border);
   border-radius: 14px;
-  padding: 40px 20px;
+  padding: 34px 20px 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 280px;
+  min-height: 480px;
   position: relative;
   overflow: hidden;
   box-shadow: var(--card-shadow);
 }
 
-.dial-visual {
-  width: 170px;
-  height: 170px;
-  border-radius: 50%;
-  border: 6px solid #cbd5e1;
-  background: radial-gradient(circle, #ffffff 0%, #f1f5f9 100%);
+.dial-visual-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 255px;
+  margin-bottom: 12px;
   position: relative;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), inset 0 0 15px rgba(0, 0, 0, 0.04);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  width: 100%;
 }
 
-.dial-visual::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 8px;
-  height: 8px;
-  background: var(--brand-gold);
+.dial-visual {
+  width: 216px;
+  height: 216px;
   border-radius: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 5;
+  position: relative;
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+  cursor: pointer;
 }
 
-.dial-visual .dial-hands {
+.dial-case-crown {
   position: absolute;
+  right: -7px;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
+  width: 7px;
+  height: 18px;
+  background: linear-gradient(to right, #94a3b8, #e2e8f0, #64748b);
+  border-radius: 2px 4px 4px 2px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.dial-svg {
   width: 100%;
   height: 100%;
+  overflow: visible;
+  display: block;
 }
 
-.dial-hands .hand-hour {
-  position: absolute;
-  top: 25%;
-  left: 49%;
-  width: 3px;
-  height: 25%;
-  background: #0f172a;
-  transform-origin: bottom;
-  transform: rotate(45deg);
-  border-radius: 2px;
+/* Numerals (Interactive & Prominent) */
+.dial-hour-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  fill: #0f172a;
+  text-anchor: middle;
+  dominant-baseline: central;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.dial-hands .hand-minute {
-  position: absolute;
-  top: 15%;
-  left: 49%;
-  width: 2px;
-  height: 35%;
-  background: var(--brand-gold);
-  transform-origin: bottom;
-  transform: rotate(210deg);
-  border-radius: 2px;
+.dial-hour-num:hover {
+  fill: var(--emerald-rich);
+  font-size: 19px;
+  font-weight: 800;
+  filter: drop-shadow(0 0 4px rgba(163, 126, 44, 0.6));
+}
+
+.dial-brand-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  fill: var(--emerald-rich);
+}
+
+.dial-brand-city {
+  font-family: 'Outfit', sans-serif;
+  font-size: 5.5px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  fill: #64748b;
+}
+
+.dial-movt {
+  font-family: 'Outfit', sans-serif;
+  font-size: 6px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  fill: #475569;
+}
+
+.dial-date-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  fill: #0f172a;
+}
+
+/* Live & Interactive Mode Badge */
+.dial-mode-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #334155;
+  background: #f8fafc;
+  padding: 4px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--card-border);
+}
+
+.dial-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  margin-right: 7px;
+  display: inline-block;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.8);
+  animation: dotPulse 1.8s infinite ease-in-out;
+}
+
+.dial-interactive-hint {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
 }
 
 .dial-selector-btn {
@@ -498,15 +1118,168 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .dial-selector-btn:hover {
-  border-color: var(--brand-gold);
-  background: #f8fafc;
+  border-color: var(--emerald-rich);
+  background: #f8faf8;
 }
 
 .dial-selector-btn.active {
-  background: #0f172a;
+  background: var(--emerald-deep);
   color: #ffffff;
-  border-color: #0f172a;
-  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.2);
+  border-color: var(--emerald-deep);
+  box-shadow: 0 4px 15px rgba(6, 40, 27, 0.25);
+}
+
+/* Full Watch Assembly with Stitched Straps */
+.watch-full-case-assembly {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.watch-strap {
+  width: 90px;
+  background: linear-gradient(180deg, #071e15 0%, #0f3324 50%, #061811 100%);
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  transition: width 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.strap-top {
+  height: 48px;
+  margin-bottom: -4px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.strap-bottom {
+  height: 58px;
+  margin-top: -4px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.strap-stitch-line {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  border-left: 2px dashed rgba(197, 160, 89, 0.65);
+}
+
+.strap-stitch-line.left {
+  left: 8px;
+}
+
+.strap-stitch-line.right {
+  right: 8px;
+}
+
+.strap-lug-pin {
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #64748b, #cbd5e1, #64748b);
+  position: absolute;
+}
+
+.strap-top .strap-lug-pin {
+  bottom: 0;
+}
+
+.strap-bottom .strap-lug-pin {
+  top: 0;
+}
+
+.strap-holes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.strap-hole {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #030e0a;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 1px rgba(197, 160, 89, 0.3);
+}
+
+/* Caliper Measurement Bar */
+.dial-caliper-bar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.caliper-tick {
+  width: 2px;
+  height: 14px;
+  background-color: var(--emerald-rich);
+  position: relative;
+}
+
+.caliper-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--emerald-rich), rgba(163, 126, 44, 0.25));
+}
+
+.caliper-line:last-of-type {
+  background: linear-gradient(90deg, rgba(163, 126, 44, 0.25), var(--emerald-rich));
+}
+
+.caliper-badge {
+  font-family: 'Outfit', monospace, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--emerald-deep);
+  background: var(--emerald-tint);
+  padding: 3px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(10, 61, 41, 0.25);
+  margin: 0 8px;
+  box-shadow: 0 2px 6px rgba(6, 40, 27, 0.08);
+  white-space: nowrap;
+}
+
+/* Dial Pro Tip & Wrist Indicator Pills */
+.dial-pro-tip-box {
+  background: #f8faf8;
+  border: 1px solid var(--card-border);
+}
+
+.pro-tip-icon {
+  font-size: 1.1rem;
+}
+
+.wrist-indicator-pill {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #64748b;
+  background: #ffffff;
+  padding: 3px 8px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.wrist-indicator-pill.active {
+  background: var(--emerald-deep);
+  color: var(--gold-radiance);
+  border-color: var(--emerald-deep);
+  font-weight: 700;
 }
 
 /* ========================================================
@@ -527,14 +1300,58 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .service-card:hover {
-  border-color: var(--brand-gold);
+  border-color: var(--emerald-rich);
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 25px rgba(6, 40, 27, 0.08);
+}
+
+.service-speed-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--emerald-deep);
+  background: var(--emerald-tint);
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(10, 61, 41, 0.2);
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
+.service-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #e8f4ee 0%, #f0fdf4 100%);
+  border: 1px solid rgba(10, 61, 41, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px auto;
+  box-shadow: 0 4px 14px rgba(6, 40, 27, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover .service-icon-wrap {
+  transform: scale(1.08) rotate(-3deg);
+  box-shadow: 0 8px 20px rgba(6, 40, 27, 0.16);
+}
+
+.service-meta-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--emerald-deep);
+  background: var(--emerald-tint);
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 10px;
 }
 
 .service-icon {
   font-size: 2.2rem;
-  color: var(--brand-gold);
+  color: var(--gold-oyster);
   margin-bottom: 14px;
 }
 
@@ -562,16 +1379,16 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .gift-card:hover {
-  border-color: var(--brand-gold);
+  border-color: var(--emerald-rich);
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 30px rgba(6, 40, 27, 0.08);
 }
 
 .gift-badge {
   position: absolute;
   top: 15px;
   right: 15px;
-  background: #0f172a;
+  background: var(--emerald-deep);
   color: #ffffff;
   font-size: 0.72rem;
   font-weight: 800;
@@ -593,10 +1410,27 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .google-stars {
-  color: #f59e0b;
+  color: var(--gold-champagne);
   font-size: 1.4rem;
   letter-spacing: 2px;
   margin-bottom: 6px;
+}
+
+.customer-avatar-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #06281b 0%, #0a3d29 100%);
+  color: var(--gold-radiance);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(6, 40, 27, 0.25);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  flex-shrink: 0;
 }
 
 /* ========================================================
@@ -703,14 +1537,220 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.15) !important;
 }
 
-/* Footer (Light Luxury) */
+/* ========================================================
+   Footer (Geneva Sovereign Imperial Emerald & Oyster Gold Theme)
+   ======================================================== */
 .site-footer {
-  background-color: var(--bg-secondary) !important;
-  border-top: 1px solid var(--card-border) !important;
-  color: var(--text-body);
+  background: linear-gradient(180deg, #06281b 0%, #02140d 100%) !important;
+  border-top: 3px solid var(--gold-oyster) !important;
+  color: #cbd5e1 !important;
+  position: relative;
+}
+
+/* Headings & Brand Elements */
+.site-footer h4,
+.site-footer h5,
+.site-footer .text-dark {
+  color: #ffffff !important;
+  letter-spacing: 0.5px;
+}
+
+.site-footer .brand-logo {
+  border-color: var(--gold-champagne) !important;
+  box-shadow: 0 0 12px rgba(197, 160, 89, 0.35);
+}
+
+.site-footer .brand-subtitle {
+  color: var(--gold-champagne) !important;
+  letter-spacing: 1.5px;
+}
+
+/* Descriptions & Paragraphs */
+.site-footer p,
+.site-footer p.text-muted,
+.site-footer .text-muted {
+  color: #cbd5e1 !important;
+  line-height: 1.7;
+}
+
+/* Brand Names Column (Titan, Fastrack, Sonata, etc.) */
+.site-footer span.text-muted {
+  color: #e2e8f0 !important;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.site-footer span.text-muted:hover {
+  color: var(--gold-radiance) !important;
+  transform: translateX(4px);
+}
+
+/* Explore Nav Links (Watch Finder, Couple Gifts, etc.) */
+.site-footer a.text-muted {
+  color: #94a3b8 !important;
+  transition: all 0.25s ease;
+  display: inline-block;
+}
+
+.site-footer a.text-muted:hover,
+.site-footer a.text-muted:focus {
+  color: var(--gold-radiance) !important;
+  transform: translateX(4px);
+  text-shadow: 0 0 10px rgba(229, 195, 120, 0.4);
+}
+
+/* Direct Inquiry Buttons */
+.site-footer .btn-outline-dark {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #f8fafc !important;
+  transition: all 0.25s ease;
+}
+
+.site-footer .btn-outline-dark:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--gold-champagne) !important;
+  color: var(--gold-radiance) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.site-footer .btn-outline-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #f8fafc !important;
+  transition: all 0.25s ease;
+}
+
+.site-footer .btn-outline-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--gold-champagne) !important;
+  color: var(--gold-radiance) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.site-footer .btn-whatsapp {
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+}
+
+/* Divider & Copyright Bar */
+.site-footer .border-bottom,
+.site-footer .border-light {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.site-footer .my-2.text-muted {
+  color: #94a3b8 !important;
+}
+
+.site-footer .my-2.text-muted strong {
+  color: #ffffff !important;
+}
+
+.site-footer a.text-dark {
+  color: #cbd5e1 !important;
+  transition: all 0.2s ease;
+}
+
+.site-footer a.text-dark:hover {
+  color: #fbbf24 !important;
+}
+
+.site-footer a.text-dark span[data-feather] {
+  color: #f59e0b;
+}
+
+@media (max-width: 1199.98px) {
+  .navbar .navbar-collapse {
+    background: linear-gradient(180deg, rgba(17, 22, 31, 0.98) 0%, rgba(10, 14, 20, 0.98) 100%) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 14px !important;
+    padding: 18px 16px !important;
+    margin-top: 14px !important;
+    border: 1px solid rgba(229, 195, 120, 0.35) !important;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85), 0 0 25px rgba(229, 195, 120, 0.12) !important;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .navbar .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 100%;
+  }
+
+  .navbar .nav-item {
+    width: 100%;
+  }
+
+  .navbar .nav-link {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 10px 14px !important;
+    border-radius: 8px !important;
+    font-size: 0.88rem !important;
+    font-weight: 700 !important;
+    color: #cbd5e1 !important;
+    letter-spacing: 1px !important;
+    border: 1px solid transparent;
+    transition: all 0.2s ease !important;
+  }
+
+  .navbar .nav-link .nav-icon {
+    font-size: 1.15rem;
+    width: 26px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .navbar .nav-link:hover,
+  .navbar .nav-link:focus,
+  .navbar .nav-link.active {
+    background: rgba(229, 195, 120, 0.14) !important;
+    color: #ffffff !important;
+    border-color: rgba(229, 195, 120, 0.3) !important;
+    transform: translateX(4px);
+    text-shadow: 0 0 10px rgba(229, 195, 120, 0.4);
+  }
+
+  .navbar-mobile-footer {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
 }
 
 @media (max-width: 576px) {
+  .navbar-brand img.brand-logo {
+    width: 44px;
+    height: 44px;
+  }
+  .navbar-brand .brand-title {
+    font-size: 1.45rem !important;
+    letter-spacing: 1.5px !important;
+  }
+  .brand-subtitle {
+    font-size: 0.68rem !important;
+    letter-spacing: 1.8px !important;
+  }
+  .hero-heritage-badge {
+    font-size: 0.82rem !important;
+    padding: 8px 16px !important;
+    letter-spacing: 1px !important;
+  }
+  .hero-watch-glow {
+    min-height: 380px !important;
+    padding: 10px 0;
+  }
+  .hero-watch-img {
+    max-height: 360px !important;
+  }
   .floating-whatsapp span.btn-text {
     display: none;
   }

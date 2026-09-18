@@ -146,52 +146,221 @@
   }
 
   /* ========================================================
-     3. Dial Size & Wrist Guide Visualizer
+     3. Dial Size & Wrist Guide Visualizer (Interactive Clock)
      ======================================================== */
   const dialData = {
     '36': {
       size: '36mm',
-      scale: 0.82,
+      scale: 0.85,
+      strapWidth: '78px',
+      caliper: '⟵ 36.0 mm ⟶',
       category: 'Vintage & Petite Classic',
       wrist: 'Best for wrists under 6.2 inches (Delicate & Classic Dress)',
       desc: 'Traditional mid-century proportions. Ideal for women, slender wrists, and understated dress watches like classic Titan or Sonata.',
-      models: 'Titan Classic Slim, Sonata Everyday, Vintage Dials'
+      models: 'Titan Classic Slim, Sonata Everyday, Vintage Dials',
+      tip: 'A <strong>36mm</strong> dial is the timeless mid-century dress size. Outstanding balance on slender wrists without overpowering cuffs.',
+      activePill: 'pillSlender'
     },
     '40': {
       size: '40mm',
-      scale: 0.94,
+      scale: 0.97,
+      strapWidth: '90px',
+      caliper: '⟵ 40.0 mm ⟶',
       category: 'The Universal Standard',
       wrist: 'Best for wrists 6.2 to 7.0 inches (Most Popular Men\'s Size)',
-      desc: 'The gold standard in modern horology. Fits virtually every wrist comfortably for office, formal suits, and casual daily wear.',
-      models: 'Titan Workwear, Tommy Hilfiger Classic, Kenneth Cole Slim'
+      desc: 'The gold standard in modern watches. Fits virtually every wrist comfortably for office, formal suits, and casual daily wear.',
+      models: 'Titan Workwear, Tommy Hilfiger Classic, Kenneth Cole Slim',
+      tip: 'A <strong>40mm</strong> dial offers the golden ratio for standard wrists (6.2" to 7.0"), ideal for both formal office cuffs and casual daily wear.',
+      activePill: 'pillUniversal'
     },
     '42': {
       size: '42mm',
-      scale: 1.05,
+      scale: 1.08,
+      strapWidth: '98px',
+      caliper: '⟵ 42.0 mm ⟶',
       category: 'Modern Contemporary & Chrono',
       wrist: 'Best for wrists 6.7 to 7.5 inches (Substantial Presence)',
       desc: 'Gives a modern, athletic wrist presence. Perfect for chronographs, multifunction dials, and sports models.',
-      models: 'Titan Octane, Tommy Hilfiger Chronograph, Fastrack Bold'
+      models: 'Titan Octane, Tommy Hilfiger Chronograph, Fastrack Bold',
+      tip: 'A <strong>42mm</strong> dial provides commanding wrist presence. Perfect for chronographs, multifunction subdials, and sports attire.',
+      activePill: 'pillUniversal'
     },
     '45': {
       size: '45mm+',
-      scale: 1.18,
+      scale: 1.20,
+      strapWidth: '108px',
+      caliper: '⟵ 45.0 mm ⟶',
       category: 'Bold Statement & Tactical',
       wrist: 'Best for wrists 7.2 inches and above (Large / Broad Wrists)',
       desc: 'Unapologetic statement styling. Demands attention with high-impact aesthetics, large subdials, and rugged cases.',
-      models: 'Police Italia Statement, Fastrack Rugged, Oversized Chronos'
+      models: 'Police Italia Statement, Fastrack Rugged, Oversized Chronos',
+      tip: 'A <strong>45mm+</strong> dial is an unapologetic masculine statement. Best suited for broad wrists exceeding 7.0" and rugged casual styles.',
+      activePill: 'pillBroad'
     }
   };
 
   function initDialGuide() {
     const dialVisual = document.getElementById('dialVisualPreview');
+    const dialSvg = document.getElementById('dialSvg');
+    const dialTicksGroup = document.getElementById('dialTicksGroup');
+    const hourHand = document.getElementById('hourHandGroup');
+    const minuteHand = document.getElementById('minuteHandGroup');
+    const secondHand = document.getElementById('secondHandGroup');
+    const dateText = document.getElementById('dialDateText');
+    const modeText = document.getElementById('dialModeText');
+    const syncBtn = document.getElementById('dialSyncBtn');
+    const statusDot = document.querySelector('.dial-status-dot');
+
     const dialSizeBadge = document.getElementById('dialSizeBadge');
     const dialCategory = document.getElementById('dialCategory');
     const dialWrist = document.getElementById('dialWrist');
     const dialDesc = document.getElementById('dialDesc');
     const dialModels = document.getElementById('dialModels');
     const dialWaBtn = document.getElementById('dialWaBtn');
+    const caliperText = document.getElementById('caliperText');
+    const dialWristTip = document.getElementById('dialWristTip');
+    const straps = document.querySelectorAll('#watchAssembly .watch-strap');
 
+    // 1. Generate 60 Precision Minute & Hour Ticks
+    if (dialTicksGroup && !dialTicksGroup.children.length) {
+      let ticksHtml = '';
+      for (let i = 0; i < 60; i++) {
+        const deg = i * 6;
+        if (i % 5 === 0) {
+          // 5-minute major hour index + gold pip
+          ticksHtml += `<line x1="120" y1="13" x2="120" y2="23" stroke="#06281b" stroke-width="2.5" stroke-linecap="round" transform="rotate(${deg} 120 120)" />`;
+          ticksHtml += `<circle cx="120" cy="28" r="1.8" fill="#c5a059" transform="rotate(${deg} 120 120)" />`;
+        } else {
+          // 1-minute fine tick
+          ticksHtml += `<line x1="120" y1="13" x2="120" y2="18.5" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round" transform="rotate(${deg} 120 120)" />`;
+        }
+      }
+      dialTicksGroup.innerHTML = ticksHtml;
+    }
+
+    // 2. Set current date in calendar aperture
+    if (dateText) {
+      dateText.textContent = new Date().getDate();
+    }
+
+    // 3. Clock State & Hands Control
+    let isInteractiveMode = false;
+    let autoResumeTimer = null;
+
+    function applyHandAngles(hourAngle, minAngle, secAngle, animated = false) {
+      if (!hourHand || !minuteHand) return;
+
+      const transitionStyle = animated 
+        ? 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)' 
+        : 'none';
+
+      hourHand.style.transition = transitionStyle;
+      minuteHand.style.transition = transitionStyle;
+      if (secondHand) secondHand.style.transition = transitionStyle;
+
+      hourHand.setAttribute('transform', `rotate(${hourAngle.toFixed(1)} 120 120)`);
+      minuteHand.setAttribute('transform', `rotate(${minAngle.toFixed(1)} 120 120)`);
+      if (secondHand && secAngle !== null) {
+        secondHand.setAttribute('transform', `rotate(${secAngle.toFixed(1)} 120 120)`);
+      }
+    }
+
+    function tickLiveClock() {
+      if (isInteractiveMode) return;
+
+      const now = new Date();
+      const hrs = now.getHours() % 12;
+      const mins = now.getMinutes();
+      const secs = now.getSeconds();
+
+      const secAngle = secs * 6;
+      const minAngle = mins * 6 + (secs / 60) * 6;
+      const hourAngle = hrs * 30 + (mins / 60) * 30;
+
+      applyHandAngles(hourAngle, minAngle, secAngle, false);
+    }
+
+    // Run tick every second
+    tickLiveClock();
+    setInterval(tickLiveClock, 1000);
+
+    function enterInteractiveMode(label) {
+      isInteractiveMode = true;
+      if (modeText) modeText.textContent = label || 'Interactive Mode';
+      if (syncBtn) syncBtn.classList.remove('d-none');
+      if (statusDot) {
+        statusDot.style.backgroundColor = '#a37e2c';
+        statusDot.style.boxShadow = '0 0 6px rgba(163, 126, 44, 0.8)';
+      }
+
+      // Automatically offer to resume after 25 seconds of inactivity
+      clearTimeout(autoResumeTimer);
+      autoResumeTimer = setTimeout(() => {
+        resumeLiveClock();
+      }, 25000);
+    }
+
+    function resumeLiveClock() {
+      isInteractiveMode = false;
+      clearTimeout(autoResumeTimer);
+      if (modeText) modeText.textContent = 'Live Local Time';
+      if (syncBtn) syncBtn.classList.add('d-none');
+      if (statusDot) {
+        statusDot.style.backgroundColor = '#22c55e';
+        statusDot.style.boxShadow = '0 0 6px rgba(34, 197, 94, 0.8)';
+      }
+      tickLiveClock();
+    }
+
+    if (syncBtn) {
+      syncBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        resumeLiveClock();
+      });
+    }
+
+    // 4. Click on Hour Numerals
+    document.querySelectorAll('.dial-hour-num').forEach((numEl) => {
+      numEl.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const hour = parseInt(this.getAttribute('data-hour'), 10);
+        
+        // Classic watch display: 10:10 aesthetic or selected hour:10
+        const displayMin = (hour === 10) ? 10 : 12;
+        const minAngle = displayMin * 6;
+        const hourAngle = (hour % 12) * 30 + (displayMin / 60) * 30;
+        const secAngle = 0;
+
+        applyHandAngles(hourAngle, minAngle, secAngle, true);
+        enterInteractiveMode(`Set to ${hour}:${displayMin < 10 ? '0' + displayMin : displayMin}`);
+      });
+    });
+
+    // 5. Click anywhere on dial face to aim hands
+    if (dialSvg) {
+      dialSvg.addEventListener('click', function (e) {
+        // Prevent click if user clicked a number (handled above)
+        if (e.target.classList.contains('dial-hour-num')) return;
+
+        const rect = dialSvg.getBoundingClientRect();
+        const clickX = e.clientX - (rect.left + rect.width / 2);
+        const clickY = e.clientY - (rect.top + rect.height / 2);
+
+        // Angle in degrees (0 = 12 o'clock, 90 = 3 o'clock, etc.)
+        let angle = Math.atan2(clickX, -clickY) * (180 / Math.PI);
+        if (angle < 0) angle += 360;
+
+        const minAngle = angle;
+        const minutes = Math.round(angle / 6);
+        const hourEstimate = Math.floor(angle / 30) || 12;
+        const hourAngle = (hourEstimate % 12) * 30 + (minutes / 60) * 30;
+
+        applyHandAngles(hourAngle, minAngle, angle, true);
+        enterInteractiveMode(`Aimed to ${minutes} min marker`);
+      });
+    }
+
+    // 6. Dial Diameter Selector Buttons (36mm, 40mm, 42mm, 45mm)
     document.querySelectorAll('.dial-selector-btn').forEach((btn) => {
       btn.addEventListener('click', function () {
         document.querySelectorAll('.dial-selector-btn').forEach(b => b.classList.remove('active'));
@@ -209,6 +378,18 @@
         if (dialWrist) dialWrist.textContent = d.wrist;
         if (dialDesc) dialDesc.textContent = d.desc;
         if (dialModels) dialModels.textContent = d.models;
+
+        if (caliperText && d.caliper) caliperText.textContent = d.caliper;
+        if (dialWristTip && d.tip) dialWristTip.innerHTML = d.tip;
+        if (straps && d.strapWidth) {
+          straps.forEach(s => s.style.width = d.strapWidth);
+        }
+
+        document.querySelectorAll('.wrist-indicator-pill').forEach(p => p.classList.remove('active'));
+        if (d.activePill) {
+          const activePillEl = document.getElementById(d.activePill);
+          if (activePillEl) activePillEl.classList.add('active');
+        }
 
         if (dialWaBtn) {
           const msg = `Hello Anupam Watch Center, I am looking for watches with dial size ${d.size} (${d.category}). Please show me what you have in stock.`;
@@ -248,12 +429,111 @@
     updateServiceLink();
   }
 
+  /* ========================================================
+     5. Home Section Interactive Watch Image Switcher (Auto 2s Rotator)
+     ======================================================== */
+  function initHeroImageSwitcher() {
+    const thumbBtns = document.querySelectorAll('.hero-thumb-btn');
+    const heroImg = document.querySelector('.hero-watch-img');
+    const topPill = document.querySelector('.hero-floating-pill.top-pill');
+    const bottomPill = document.querySelector('.hero-floating-pill.bottom-pill');
+
+    if (!thumbBtns.length || !heroImg) return;
+
+    let currentIndex = 0;
+    let autoSwitchTimer = null;
+
+    function switchToIndex(idx) {
+      if (idx < 0 || idx >= thumbBtns.length) return;
+      currentIndex = idx;
+      const targetBtn = thumbBtns[idx];
+
+      thumbBtns.forEach((b, i) => {
+        b.classList.toggle('active', i === idx);
+      });
+
+      const newSrc = targetBtn.getAttribute('data-img');
+      const newBadge = targetBtn.getAttribute('data-badge');
+      const newSpec = targetBtn.getAttribute('data-spec');
+      const newTheme = targetBtn.getAttribute('data-theme');
+
+      // Update Home Section ambient theme matching the active watch model
+      const homeSection = document.getElementById('home');
+      if (homeSection && newTheme) {
+        homeSection.classList.remove('theme-cognac', 'theme-sapphire', 'theme-khaki');
+        homeSection.classList.add(newTheme);
+      }
+
+      heroImg.style.opacity = '0';
+      heroImg.style.transform = 'scale(0.94)';
+
+      setTimeout(() => {
+        if (newSrc) heroImg.src = newSrc;
+        if (topPill && newBadge) topPill.innerHTML = newBadge;
+        if (bottomPill && newSpec) bottomPill.innerHTML = newSpec;
+        heroImg.style.opacity = '1';
+        heroImg.style.transform = 'scale(1)';
+      }, 160);
+    }
+
+    function startAutoRotation() {
+      stopAutoRotation();
+      autoSwitchTimer = setInterval(() => {
+        const nextIndex = (currentIndex + 1) % thumbBtns.length;
+        switchToIndex(nextIndex);
+      }, 2000); // 2 second automatic gap
+    }
+
+    function stopAutoRotation() {
+      if (autoSwitchTimer) {
+        clearInterval(autoSwitchTimer);
+        autoSwitchTimer = null;
+      }
+    }
+
+    // Manual click on thumbnail pills
+    thumbBtns.forEach((btn, idx) => {
+      btn.addEventListener('click', function () {
+        switchToIndex(idx);
+        startAutoRotation(); // restart 2s timer after manual click
+      });
+    });
+
+    // Start 2-second automatic rotation
+    startAutoRotation();
+  }
+
+  /* ========================================================
+     6. Mobile Navigation Drawer Auto-Close & Smooth Navigation
+     ======================================================== */
+  function initMobileNav() {
+    const navCollapse = document.getElementById('navbarSupportedContent');
+    const navToggler = document.getElementById('navbarMobileToggle');
+    if (!navCollapse || !navToggler) return;
+
+    navCollapse.addEventListener('click', function (e) {
+      const targetLink = e.target.closest('a.nav-link, a.btn');
+      if (!targetLink) return;
+
+      if (window.innerWidth < 1200) {
+        if (window.bootstrap && window.bootstrap.Collapse) {
+          const bsCollapse = window.bootstrap.Collapse.getInstance(navCollapse) || new window.bootstrap.Collapse(navCollapse, { toggle: false });
+          bsCollapse.hide();
+        } else if (navCollapse.classList.contains('show')) {
+          navToggler.click();
+        }
+      }
+    });
+  }
+
   // Initialize all on DOM ready
   document.addEventListener('DOMContentLoaded', function () {
     updateStoreStatus();
     setInterval(updateStoreStatus, 60000); // Check every minute
+    initHeroImageSwitcher();
     initQuiz();
     initDialGuide();
     initServiceForm();
+    initMobileNav();
   });
 })();
