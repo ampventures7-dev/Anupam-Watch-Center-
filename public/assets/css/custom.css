@@ -1,0 +1,728 @@
+/* Anupam Watch Center - Luxury White Theme */
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --text-main: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --brand-gold: #b45309;
+  --brand-gold-hover: #92400e;
+  --brand-gold-subtle: #d97706;
+  --wa-green: #25d366;
+  --wa-dark: #128c7e;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --card-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
+}
+
+body {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-body) !important;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  color: var(--text-main) !important;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -0.5px;
+}
+
+/* ========================================================
+   Navbar (Luxury White Glassmorphism)
+   ======================================================== */
+.navbar {
+  background: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--card-border) !important;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
+}
+
+.navbar-brand img.brand-logo {
+  height: 42px;
+  width: 42px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--brand-gold);
+  box-shadow: 0 0 10px rgba(180, 83, 9, 0.25);
+}
+
+.navbar-brand .brand-title {
+  color: var(--text-main) !important;
+}
+
+.brand-subtitle {
+  font-size: 0.68rem;
+  letter-spacing: 1.2px;
+  color: var(--brand-gold);
+  text-transform: uppercase;
+  font-weight: 700;
+  display: block;
+  white-space: nowrap;
+}
+
+.navbar .navbar-nav {
+  align-items: center;
+}
+
+.navbar .nav-link {
+  white-space: nowrap !important;
+  font-size: 0.80rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.8px;
+  padding: 0.4rem 0.55rem !important;
+  color: #334155 !important;
+  transition: all 0.2s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+  color: var(--brand-gold) !important;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap !important;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+/* Live Store Status Badge */
+.live-store-status {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.live-store-status.open {
+  background: rgba(37, 211, 102, 0.12);
+  color: #15803d;
+  border: 1px solid rgba(37, 211, 102, 0.35);
+}
+
+.live-store-status.closed {
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+  display: inline-block;
+}
+
+.live-store-status.open .status-dot {
+  background-color: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  animation: dotPulse 1.8s infinite ease-in-out;
+}
+
+.live-store-status.closed .status-dot {
+  background-color: #f59e0b;
+}
+
+@keyframes dotPulse {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+/* ========================================================
+   Floating WhatsApp Button
+   ======================================================== */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  background-color: var(--wa-green);
+  color: #ffffff !important;
+  border-radius: 50px;
+  padding: 10px 18px 10px 14px;
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.floating-whatsapp:hover {
+  background-color: #1ebe5d;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
+  color: #ffffff !important;
+}
+
+.floating-whatsapp svg {
+  width: 28px;
+  height: 28px;
+  margin-right: 8px;
+  fill: currentColor;
+}
+
+.floating-whatsapp .pulse-ring {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid var(--wa-green);
+  border-radius: 50px;
+  animation: waPulse 2s infinite ease-out;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+@keyframes waPulse {
+  0% { transform: scale(0.98); opacity: 0.8; }
+  70% { transform: scale(1.08); opacity: 0; }
+  100% { transform: scale(1.08); opacity: 0; }
+}
+
+/* Buttons */
+.btn-whatsapp {
+  background-color: var(--wa-green);
+  color: #ffffff !important;
+  border: none;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+  padding: 10px 22px;
+  border-radius: 6px;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1ebe5d;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+}
+
+.btn-whatsapp svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.btn-dark-luxury {
+  background-color: #0f172a;
+  color: #ffffff !important;
+  font-weight: 700;
+  border: 1px solid #0f172a;
+  border-radius: 6px;
+  padding: 10px 22px;
+  transition: all 0.25s ease;
+}
+
+.btn-dark-luxury:hover {
+  background-color: #1e293b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.2);
+  color: #ffffff !important;
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #b45309, #d97706);
+  color: #ffffff !important;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(180, 83, 9, 0.3);
+  color: #ffffff !important;
+}
+
+/* ========================================================
+   Hero Section (White Luxury Gradient)
+   ======================================================== */
+.hero-white-section {
+  background: linear-gradient(125deg, #ffffff 0%, #f8fafc 50%, #edf2f7 100%);
+  border-bottom: 1px solid var(--card-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-watch-glow {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-watch-glow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(180, 83, 9, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 0;
+  animation: floatHalo 6s ease-in-out infinite alternate;
+}
+
+.hero-watch-img {
+  position: relative;
+  z-index: 1;
+  max-height: 440px;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.15));
+  animation: floatWatch 5s ease-in-out infinite alternate;
+}
+
+@keyframes floatWatch {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-12px) rotate(1deg); }
+}
+
+@keyframes floatHalo {
+  0% { transform: translate(-50%, -50%) scale(0.9); }
+  100% { transform: translate(-50%, -50%) scale(1.15); }
+}
+
+/* ========================================================
+   Brand Cards (Crisp White Elevation)
+   ======================================================== */
+.brand-card {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 24px 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--card-shadow);
+}
+
+.brand-card:hover {
+  border-color: var(--brand-gold);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.brand-card .brand-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  color: var(--text-main);
+}
+
+.brand-card .brand-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ========================================================
+   1. Watch Finder Quiz Styling (Light Theme)
+   ======================================================== */
+.quiz-section {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--card-border);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.quiz-container {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 36px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.04);
+}
+
+.quiz-group-title {
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--brand-gold);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.quiz-option-btn {
+  background: #f8fafc;
+  border: 1px solid var(--card-border);
+  color: #1e293b;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quiz-option-btn:hover {
+  background: #edf2f7;
+  border-color: #cbd5e1;
+  color: var(--text-main);
+}
+
+.quiz-option-btn.active {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+}
+
+.quiz-result-card {
+  background: #f8fafc;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 28px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ========================================================
+   2. Dial Guide & Wrist Visualizer (Light Theme)
+   ======================================================== */
+.dial-guide-section {
+  background-color: #ffffff;
+}
+
+.dial-display-box {
+  background: #f8fafc;
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 40px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.dial-visual {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border: 6px solid #cbd5e1;
+  background: radial-gradient(circle, #ffffff 0%, #f1f5f9 100%);
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), inset 0 0 15px rgba(0, 0, 0, 0.04);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dial-visual::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: var(--brand-gold);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.dial-visual .dial-hands {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+}
+
+.dial-hands .hand-hour {
+  position: absolute;
+  top: 25%;
+  left: 49%;
+  width: 3px;
+  height: 25%;
+  background: #0f172a;
+  transform-origin: bottom;
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+
+.dial-hands .hand-minute {
+  position: absolute;
+  top: 15%;
+  left: 49%;
+  width: 2px;
+  height: 35%;
+  background: var(--brand-gold);
+  transform-origin: bottom;
+  transform: rotate(210deg);
+  border-radius: 2px;
+}
+
+.dial-selector-btn {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  color: var(--text-main);
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.dial-selector-btn:hover {
+  border-color: var(--brand-gold);
+  background: #f8fafc;
+}
+
+.dial-selector-btn.active {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.2);
+}
+
+/* ========================================================
+   3. Service & Repair Booking (Light Theme)
+   ======================================================== */
+.service-section {
+  background: var(--bg-secondary);
+}
+
+.service-card {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  height: 100%;
+  box-shadow: var(--card-shadow);
+}
+
+.service-card:hover {
+  border-color: var(--brand-gold);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.service-icon {
+  font-size: 2.2rem;
+  color: var(--brand-gold);
+  margin-bottom: 14px;
+}
+
+.service-booking-box {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 34px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.04);
+}
+
+/* ========================================================
+   4. Wedding & Gift Sets Luxury Cards (Light Theme)
+   ======================================================== */
+.gift-card {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.gift-card:hover {
+  border-color: var(--brand-gold);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.gift-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+/* ========================================================
+   5. Google Reviews & Trust Card (Light Theme)
+   ======================================================== */
+.google-rating-box {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+}
+
+.google-stars {
+  color: #f59e0b;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+/* ========================================================
+   6. Google Maps Container
+   ======================================================== */
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ========================================================
+   FAQ Accordion (Light Theme)
+   ======================================================== */
+.faq-section {
+  background-color: var(--bg-secondary);
+}
+
+.custom-accordion .accordion-item {
+  background-color: #ffffff;
+  border: 1px solid var(--card-border);
+  margin-bottom: 12px;
+  border-radius: 8px !important;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.custom-accordion .accordion-button {
+  background-color: #ffffff;
+  color: var(--text-main);
+  font-size: 1.02rem;
+  font-weight: 600;
+  padding: 18px 24px;
+  box-shadow: none !important;
+}
+
+.custom-accordion .accordion-button:not(.collapsed) {
+  background-color: #f8fafc;
+  color: var(--brand-gold);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.custom-accordion .accordion-body {
+  background-color: #ffffff;
+  color: var(--text-body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  padding: 20px 24px;
+}
+
+/* Instagram Highlight Card */
+.insta-highlight-card {
+  background: linear-gradient(135deg, rgba(240, 245, 255, 0.9), rgba(254, 242, 242, 0.9), rgba(255, 251, 235, 0.9));
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 30px;
+  transition: all 0.3s ease;
+  box-shadow: var(--card-shadow);
+}
+
+.insta-highlight-card:hover {
+  border-color: #f87171;
+  transform: translateY(-3px);
+}
+
+/* Trust Badges */
+.trust-badge {
+  padding: 18px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  text-align: center;
+  height: 100%;
+  box-shadow: var(--card-shadow);
+}
+
+.trust-badge-number {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--brand-gold);
+}
+
+/* Form Controls (Light Theme) */
+.form-select, .form-control {
+  background-color: #ffffff !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--card-border) !important;
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+
+.form-select:focus, .form-control:focus {
+  border-color: var(--brand-gold) !important;
+  box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.15) !important;
+}
+
+/* Footer (Light Luxury) */
+.site-footer {
+  background-color: var(--bg-secondary) !important;
+  border-top: 1px solid var(--card-border) !important;
+  color: var(--text-body);
+}
+
+@media (max-width: 576px) {
+  .floating-whatsapp span.btn-text {
+    display: none;
+  }
+  .floating-whatsapp {
+    padding: 12px;
+    border-radius: 50%;
+    bottom: 20px;
+    right: 20px;
+  }
+  .floating-whatsapp svg {
+    margin-right: 0;
+    width: 30px;
+    height: 30px;
+  }
+}
